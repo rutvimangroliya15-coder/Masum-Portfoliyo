@@ -7,10 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-main: #000000;
-            --text-muted: #444444;
-            --border-color: #000000;
+            --bg-color: #0a0a0a;
+            --card-bg: #121212;
+            --accent-color: #e2b714; /* Golden Accent matching professional portfolios */
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #262626;
         }
 
         * {
@@ -24,22 +26,23 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 40px;
+            padding: 40px 20px;
         }
 
-        /* 100% Full Width Resume Container to match standard PDF */
         .resume-container {
-            width: 100%;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: var(--bg-color);
-            padding: 0px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Header Styles matching professional PDF structure */
+        /* Header Styles */
         header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
             margin-bottom: 30px;
             display: flex;
             justify-content: space-between;
@@ -49,109 +52,95 @@
         }
 
         .header-left h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            text-transform: uppercase;
+        }
+
+        .header-left h1 span {
+            color: var(--accent-color);
         }
 
         .title-tag {
             font-size: 1.1rem;
-            color: var(--text-muted);
+            color: var(--accent-color);
             margin-top: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .header-right {
             text-align: right;
             font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.7;
         }
 
         .header-right a {
             color: var(--text-main);
             text-decoration: none;
-            font-weight: 500;
+            transition: color 0.2s;
         }
 
         .header-right a:hover {
-            text-decoration: underline;
+            color: var(--accent-color);
         }
 
-        /* Section Layout matching standard document structure */
+        /* Section Layout */
         .section-title {
-            font-size: 1.2rem;
-            color: var(--text-main);
+            font-size: 1.3rem;
+            color: var(--accent-color);
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
         }
 
         section {
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         p.objective {
             color: var(--text-muted);
             font-size: 1.05rem;
-            text-align: justify;
         }
 
-        /* Timeline Items for Experience & Education */
+        /* Grid for Experience & Education */
         .timeline-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
         }
 
         .timeline-header {
             display: flex;
             justify-content: space-between;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
             flex-wrap: wrap;
         }
 
         .timeline-company {
             color: var(--text-muted);
-            font-weight: 600;
+            font-weight: 400;
             font-size: 1rem;
             margin-bottom: 5px;
         }
 
         .timeline-date {
-            color: var(--text-main);
+            color: var(--accent-color);
             font-size: 0.95rem;
-            font-weight: 700;
         }
 
         .timeline-body {
             color: var(--text-muted);
-            margin-top: 5px;
-            list-style: none;
-            padding-left: 0;
+            margin-top: 8px;
+            padding-left: 15px;
         }
 
         .timeline-body li {
             margin-bottom: 5px;
-            position: relative;
-            padding-left: 15px;
-            font-size: 1.05rem;
         }
 
-        .timeline-body li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--text-main);
-            font-weight: bold;
-        }
-
-        /* Skills Layout */
+        /* Skills Tags */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
@@ -159,105 +148,76 @@
         }
 
         .skill-tag {
-            background-color: #f5f5f5;
-            border: 1px solid #dddddd;
-            padding: 6px 14px;
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 30px;
             font-size: 0.95rem;
-            font-weight: 500;
-            border-radius: 4px;
-            color: var(--text-main);
+            transition: all 0.3s ease;
         }
 
-        /* Top Action Bar (hidden during printing) */
+        .skill-tag:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Floating Back/Print Action */
         .actions {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto 30px auto;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eeeeee;
-            padding-bottom: 15px;
         }
 
         .btn {
-            background-color: #000000;
-            border: 1px solid #000000;
-            color: #ffffff;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
             padding: 10px 20px;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             transition: all 0.2s;
         }
 
         .btn:hover {
-            background-color: transparent;
-            color: #000000;
+            background-color: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
         }
 
-        .btn-back {
-            background: transparent;
-            border: none;
-            color: var(--text-main);
-            font-weight: 600;
-        }
-        .btn-back:hover {
-            text-decoration: underline;
-            background: transparent;
-            color: var(--text-main);
-        }
-
-        .personal-info-row p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }
-
-        .personal-info-row strong {
-            color: var(--text-main);
-            font-weight: 600;
-            display: inline-block;
-            width: 140px;
-        }
-
-        /* Print Settings optimization */
+        /* Print optimization */
         @media print {
-            body { padding: 0; background: #ffffff; }
-            .actions { display: none !important; }
-            .resume-container { max-width: 100%; }
-            .skill-tag { background: transparent !important; border: 1px solid #cccccc !important; }
+            body { background: #fff; color: #000; padding: 0; }
+            .resume-container { border: none; box-shadow: none; padding: 0; background: #fff; color: #000;}
+            .actions, .skill-tag:hover { display: none; }
+            .section-title, .timeline-date, .header-left h1 span, .title-tag { color: #000 !important; border-color: #000 !important; }
+            .skill-tag { background: #fff; color: #000; border: 1px solid #000; }
+            .header-right a { color: #000; }
         }
 
-        @media (max-width: 768px) {
-            body { padding: 20px; }
-            header { flex-direction: column; gap: 15px; }
-            .header-right { text-align: left; }
-            .header-left h1 { font-size: 2.2rem; }
-            .timeline-header { flex-direction: column; gap: 2px; }
-            .personal-info-row strong { width: auto; margin-right: 10px; }
+        @media (max-width: 600px) {
+            header { flex-direction: column; text-align: center; }
+            .header-right { text-align: center; width: 100%; }
+            .timeline-header { flex-direction: column; }
+            .resume-container { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- TOP ACTION NAVIGATION -->
     <div class="actions">
-        <a href="index.html" class="btn btn-back">← Back to Portfolio</a>
+        <a href="index.html" class="btn">← Back to Portfolio</a>
         <button onclick="window.print()" class="btn">Print / Save as PDF 🖨️</button>
     </div>
 
-    <!-- MAIN RESUME BOX (100% WIDTH / WHITE BACKGROUND) -->
     <div class="resume-container">
-        
         <!-- HEADER -->
         <header>
             <div class="header-left">
-                <h1>MASUM S. PATEL</h1>
+                <h1>MASUM S. <span>PATEL</span></h1>
                 <div class="title-tag">Social Media Marketing & SEO Executive | IoT Enthusiast</div>
             </div>
             <div class="header-right">
@@ -282,7 +242,7 @@
             <div class="timeline-item">
                 <div class="timeline-header">
                     <div>Social Media Marketing & SEO Executive</div>
-                    <div class="timeline-date">NOV 2025 - PRESENT</div>
+                    <div class="timeline-date">NOV 2025 - Present</div>
                 </div>
                 <div class="timeline-company">NXC Controls Pvt. Ltd. | Ahmedabad</div>
                 <ul class="timeline-body">
@@ -295,7 +255,7 @@
             <div class="timeline-item">
                 <div class="timeline-header">
                     <div>Sale-Purchase Executive (DMS)</div>
-                    <div class="timeline-date">2024 - 2025 (1.5 YEARS)</div>
+                    <div class="timeline-date">2024 - 2025 (1.5 Years)</div>
                 </div>
                 <div class="timeline-company">SANITRADE (Jaquar AD) | Ahmedabad</div>
                 <ul class="timeline-body">
@@ -311,7 +271,7 @@
             <div class="timeline-item">
                 <div class="timeline-header">
                     <div>B.Tech - Computer Engineering</div>
-                    <div class="timeline-date">MAY 2023</div>
+                    <div class="timeline-date">May 2023</div>
                 </div>
                 <div class="timeline-company">Swarnim Startup & Innovation University</div>
                 <p class="timeline-body"><strong>CGPA:</strong> 9.11 (Distinction)</p>
@@ -320,7 +280,7 @@
             <div class="timeline-item">
                 <div class="timeline-header">
                     <div>Diploma - Computer Engineering</div>
-                    <div class="timeline-date">MAY 2021</div>
+                    <div class="timeline-date">May 2021</div>
                 </div>
                 <div class="timeline-company">Swarnim Startup & Innovation University</div>
                 <p class="timeline-body"><strong>CGPA:</strong> 7.73 (First Class)</p>
@@ -350,7 +310,7 @@
                 <div class="timeline-header">
                     <div>Project 1 - DigiEvento</div>
                 </div>
-                <p class="timeline-body" style="color: var(--text-muted); margin-top: 5px; font-size: 1.05rem;">
+                <p class="timeline-body">
                     An event planning platform where customers can connect with diverse event planners, book events per their requirements, and planners can promote their services.
                 </p>
             </div>
@@ -359,21 +319,19 @@
                 <div class="timeline-header">
                     <div>Project 2 - IoT Based Smart Shopping Cart</div>
                 </div>
-                <p class="timeline-body" style="color: var(--text-muted); margin-top: 5px; font-size: 1.05rem;">
+                <p class="timeline-body">
                     An IoT-powered shopping cart that scans RFID-tagged products, automatically generates bills, and provides live shopping details via a web dashboard. Customers unlock the trolley using a digital card.
                 </p>
             </div>
         </section>
 
         <!-- PERSONAL INFO -->
-        <section style="margin-bottom: 0;">
+        <section>
             <div class="section-title">Personal Information</div>
-            <div class="personal-info-row">
-                <p><strong>Languages Known:</strong> English, Gujarati, Hindi</p>
-                <p><strong>Nationality:</strong> Indian</p>
-                <p><strong>Marital Status:</strong> Single</p>
-                <p><strong>Date of Birth:</strong> 1st August 2000</p>
-            </div>
+            <p style="color: var(--text-muted);"><strong>Languages Known:</strong> English, Gujarati, Hindi</p>
+            <p style="color: var(--text-muted);"><strong>Nationality:</strong> Indian</p>
+            <p style="color: var(--text-muted);"><strong>Marital Status:</strong> Single</p>
+            <p style="color: var(--text-muted);"><strong>Date of Birth:</strong> 1st August 2000</p>
         </section>
     </div>
 
