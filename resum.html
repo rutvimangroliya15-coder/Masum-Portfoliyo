@@ -4,16 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Masum Patel - Resume</title>
-<link href="style.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-color: #0a0a0a;
-    --card-bg: #121212;
-    --accent-color: #e2b714;
-    --text-main: #ffffff;
-    --text-mid: #a0a0a0;
-    --border-color: #262626;
+    --bg-color: #ffffff;
+    --text-main: #000000;
+    --text-mid: #444444;
+    --border-color: #cccccc;
   }
 
   * {
@@ -27,11 +24,11 @@
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
-    padding: 60px 20px;
+    padding: 40px;
     overflow-x: hidden;
   }
 
-  /* Custom Cursor Elements matching portfolio */
+  /* Custom Cursor Elements (Subtle on White BG) */
   .cursor {
     width: 8px;
     height: 8px;
@@ -41,12 +38,11 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9999;
-    mix-blend-mode: difference;
   }
   .cursor-ring {
     width: 40px;
     height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     position: fixed;
     transform: translate(-50%, -50%);
@@ -57,17 +53,20 @@
   .cursor-ring.hovering {
     width: 60px;
     height: 60px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     border-color: var(--text-main);
   }
 
   /* Action Buttons Grid */
   .actions-nav {
-    max-width: 900px;
-    margin: 0 auto 30px auto;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 15px;
   }
 
   .btn-back {
@@ -76,142 +75,144 @@
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    font-weight: 500;
     transition: opacity 0.3s;
   }
   .btn-back:hover {
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   .btn-print {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 12px 24px;
-    border-radius: 0px;
-    font-size: 14px;
+    background: #000000;
+    border: 1px solid #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   .btn-print:hover {
-    background: var(--text-main);
-    color: var(--bg-color);
-    border-color: var(--text-main);
+    background: transparent;
+    color: #000000;
   }
 
-  /* Main Container Layout */
+  /* Full Width Resume Layout to match PDF Structure */
   .resume-layout {
-    max-width: 900px;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 60px;
-    position: relative;
+    background-color: var(--bg-color);
+    padding: 0px;
   }
 
   /* Header Section */
   .resume-header {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 40px;
-    margin-bottom: 40px;
+    border-bottom: 2px solid var(--text-main);
+    padding-bottom: 20px;
+    margin-bottom: 35px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
   }
 
   .header-left h1 {
-    font-size: 3rem;
-    font-weight: 400;
-    letter-spacing: -1px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
     line-height: 1.1;
+    text-transform: uppercase;
   }
   .header-left h1 em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 400;
+    text-transform: none;
   }
   .header-tagline {
     font-size: 14px;
     color: var(--text-mid);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 15px;
+    letter-spacing: 1.5px;
+    margin-top: 8px;
+    font-weight: 500;
   }
 
   .header-right {
     text-align: right;
     font-size: 14px;
     color: var(--text-mid);
-    line-height: 1.8;
+    line-height: 1.7;
   }
   .header-right a {
     color: inherit;
     text-decoration: none;
-    transition: color 0.3s;
   }
   .header-right a:hover {
-    color: var(--text-main);
+    text-decoration: underline;
   }
 
   /* Block Sections */
   .resume-section {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
   }
   .section-eyebrow {
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-mid);
-    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    color: var(--text-main);
+    font-weight: 700;
+    border-bottom: 1px solid var(--text-main);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
   }
 
   .objective-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    line-height: 1.5;
-    color: var(--text-main);
-    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-mid);
   }
 
   /* Info / Data Grids */
   .info-item {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
   }
   .info-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     flex-wrap: wrap;
     gap: 10px;
   }
   .info-title {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 700;
     color: var(--text-main);
   }
   .info-date {
     font-size: 14px;
-    color: var(--text-mid);
-    letter-spacing: 1px;
+    color: var(--text-main);
+    font-weight: 600;
   }
   .info-sub {
     font-size: 14px;
     color: var(--text-mid);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    font-weight: 500;
+    margin-bottom: 8px;
   }
   .info-desc {
     font-size: 15px;
     color: var(--text-mid);
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
-  /* List Styling mapping process steps */
+  /* List Styling matching PDF bullet points */
   .info-list {
     list-style: none;
     padding-left: 0;
@@ -219,64 +220,62 @@
   .info-list li {
     font-size: 15px;
     color: var(--text-mid);
-    line-height: 1.7;
-    margin-bottom: 8px;
+    line-height: 1.6;
+    margin-bottom: 5px;
     position: relative;
-    padding-left: 20px;
+    padding-left: 15px;
   }
   .info-list li::before {
-    content: "—";
+    content: "•";
     position: absolute;
     left: 0;
-    color: var(--border-color);
+    color: var(--text-main);
+    font-weight: bold;
   }
 
-  /* Tools Tags format */
+  /* Tools Tags Clean Format */
   .tools-wrap {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
   .tool-tag {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    padding: 8px 18px;
+    background: #f5f5f5;
+    border: 1px solid #dddddd;
+    padding: 6px 14px;
     font-size: 13px;
-    letter-spacing: 0.5px;
     color: var(--text-main);
-    transition: border-color 0.3s;
-  }
-  .tool-tag:hover {
-    border-color: var(--text-main);
+    font-weight: 500;
+    border-radius: 4px;
   }
 
   .personal-details p {
     font-size: 15px;
     color: var(--text-mid);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .personal-details strong {
     color: var(--text-main);
-    font-weight: 500;
+    font-weight: 600;
+    display: inline-block;
+    width: 120px;
   }
 
   /* Print Media Layout Fixes */
   @media print {
-    body { background: #ffffff; color: #000000; padding: 0; }
-    .resume-layout { border: none; padding: 0; background: #ffffff; color: #000000; }
-    .actions-nav, .cursor, .cursor-ring { display: none; }
-    .section-eyebrow, .info-date, .header-right, .info-sub, .info-desc, .info-list li, .personal-details p { color: #000000 !important; }
-    .header-left h1, .info-title, .personal-details strong, .objective-text { color: #000000 !important; }
-    .tool-tag { border: 1px solid #000000 !important; color: #000000 !important; }
-    .info-list li::before { color: #000000 !important; }
+    body { padding: 0; background: #ffffff; }
+    .actions-nav, .cursor, .cursor-ring { display: none !important; }
+    .resume-layout { max-width: 100%; }
+    .tool-tag { background: transparent !important; border: 1px solid #cccccc !important; }
   }
 
   @media (max-width: 768px) {
-    .resume-layout { padding: 30px 20px; }
+    body { padding: 20px; }
     .resume-header { flex-direction: column; gap: 15px; }
     .header-right { text-align: left; }
     .header-left h1 { font-size: 2.2rem; }
-    .info-row { flex-direction: column; gap: 5px; }
+    .info-row { flex-direction: column; gap: 2px; }
+    .personal-details strong { width: auto; margin-right: 10px; }
   }
 </style>
 </head>
@@ -291,13 +290,13 @@
   <button onclick="window.print()" class="btn-print">Print / Save PDF</button>
 </div>
 
-<!-- RESUME CONTENT BOX -->
+<!-- RESUME CONTENT BOX (100% WIDTH) -->
 <div class="resume-layout">
   
   <!-- HEADER -->
   <header class="resume-header">
     <div class="header-left">
-      <h1>Masum S. <em>Patel</em></h1>
+      <h1>Masum S. <span>Patel</span></h1>
       <div class="header-tagline">Social Media Marketing & SEO Executive — IoT Enthusiast</div>[cite: 5]
     </div>
     <div class="header-right">
@@ -418,7 +417,7 @@
 
 </div>
 
-<!-- CURSOR SCRIPT FROM PORTFOLIO -->
+<!-- CURSOR SCRIPT -->
 <script>
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
@@ -440,7 +439,7 @@ function animRing() {
 }
 animRing();
 
-document.querySelectorAll('a, button, .tool-tag').forEach(el => {
+document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
   el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
 });
