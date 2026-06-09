@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masum S. Patel - Online Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #121212;
+            --accent-color: #e2b714; /* Golden Accent matching professional portfolios */
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #262626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Header Styles */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-left h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-left h1 span {
+            color: var(--accent-color);
+        }
+
+        .title-tag {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .header-right a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-right a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section Layout */
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        p.objective {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Grid for Experience & Education */
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1rem;
+            flex-wrap: wrap;
+        }
+
+        .timeline-company {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+        }
+
+        .timeline-body {
+            color: var(--text-muted);
+            margin-top: 8px;
+            padding-left: 15px;
+        }
+
+        .timeline-body li {
+            margin-bottom: 5px;
+        }
+
+        /* Skills Tags */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Floating Back/Print Action */
+        .actions {
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+        }
+
+        /* Print optimization */
+        @media print {
+            body { background: #fff; color: #000; padding: 0; }
+            .resume-container { border: none; box-shadow: none; padding: 0; background: #fff; color: #000;}
+            .actions, .skill-tag:hover { display: none; }
+            .section-title, .timeline-date, .header-left h1 span, .title-tag { color: #000 !important; border-color: #000 !important; }
+            .skill-tag { background: #fff; color: #000; border: 1px solid #000; }
+            .header-right a { color: #000; }
+        }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; text-align: center; }
+            .header-right { text-align: center; width: 100%; }
+            .timeline-header { flex-direction: column; }
+            .resume-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="actions">
+        <a href="index.html" class="btn">← Back to Portfolio</a>
+        <button onclick="window.print()" class="btn">Print / Save as PDF 🖨️</button>
+    </div>
+
+    <div class="resume-container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-left">
+                <h1>MASUM S. <span>PATEL</span></h1>
+                <div class="title-tag">Social Media Marketing & SEO Executive | IoT Enthusiast</div>
+            </div>
+            <div class="header-right">
+                <p>📍 Bapunagar - 380024, Ahmedabad</p>
+                <p>📞 <a href="tel:+919727831818">(+91) 9727831818</a></p>
+                <p>✉️ <a href="mailto:Masumpatel186@gmail.com">Masumpatel186@gmail.com</a></p>
+            </div>
+        </header>
+
+        <!-- OBJECTIVE -->
+        <section>
+            <div class="section-title">Objective</div>
+            <p class="objective">
+                Seeking a challenging position with a reputable organization where I can acquire new skills, broaden my knowledge, and leverage my expertise in web development, SEO, and IoT solutions.
+            </p>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section>
+            <div class="section-title">Experience</div>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>Social Media Marketing & SEO Executive</div>
+                    <div class="timeline-date">NOV 2025 - Present</div>
+                </div>
+                <div class="timeline-company">NXC Controls Pvt. Ltd. | Ahmedabad</div>
+                <ul class="timeline-body">
+                    <li>Designed and developed responsive posts tailored to business requirements.</li>
+                    <li>Implemented on-page and off-page SEO strategies to improve search engine rankings.</li>
+                    <li>Managed social media channels and executed digital marketing campaigns.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>Sale-Purchase Executive (DMS)</div>
+                    <div class="timeline-date">2024 - 2025 (1.5 Years)</div>
+                </div>
+                <div class="timeline-company">SANITRADE (Jaquar AD) | Ahmedabad</div>
+                <ul class="timeline-body">
+                    <li>Managed sale-purchase orders through the Dealer Management System (DMS).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+            <div class="section-title">Education</div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>B.Tech - Computer Engineering</div>
+                    <div class="timeline-date">May 2023</div>
+                </div>
+                <div class="timeline-company">Swarnim Startup & Innovation University</div>
+                <p class="timeline-body"><strong>CGPA:</strong> 9.11 (Distinction)</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>Diploma - Computer Engineering</div>
+                    <div class="timeline-date">May 2021</div>
+                </div>
+                <div class="timeline-company">Swarnim Startup & Innovation University</div>
+                <p class="timeline-body"><strong>CGPA:</strong> 7.73 (First Class)</p>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section>
+            <div class="section-title">Skills</div>
+            <div class="skills-grid">
+                <div class="skill-tag">SEO Optimization</div>
+                <div class="skill-tag">Social Media Marketing</div>
+                <div class="skill-tag">Web Design</div>
+                <div class="skill-tag">IoT Development</div>
+                <div class="skill-tag">PHP</div>
+                <div class="skill-tag">Python (Django)</div>
+                <div class="skill-tag">HTML / CSS</div>
+                <div class="skill-tag">SQL</div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section>
+            <div class="section-title">Projects</div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>Project 1 - DigiEvento</div>
+                </div>
+                <p class="timeline-body">
+                    An event planning platform where customers can connect with diverse event planners, book events per their requirements, and planners can promote their services.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>Project 2 - IoT Based Smart Shopping Cart</div>
+                </div>
+                <p class="timeline-body">
+                    An IoT-powered shopping cart that scans RFID-tagged products, automatically generates bills, and provides live shopping details via a web dashboard. Customers unlock the trolley using a digital card.
+                </p>
+            </div>
+        </section>
+
+        <!-- PERSONAL INFO -->
+        <section>
+            <div class="section-title">Personal Information</div>
+            <p style="color: var(--text-muted);"><strong>Languages Known:</strong> English, Gujarati, Hindi</p>
+            <p style="color: var(--text-muted);"><strong>Nationality:</strong> Indian</p>
+            <p style="color: var(--text-muted);"><strong>Marital Status:</strong> Single</p>
+            <p style="color: var(--text-muted);"><strong>Date of Birth:</strong> 1st August 2000</p>
+        </section>
+    </div>
+
+</body>
+</html>
