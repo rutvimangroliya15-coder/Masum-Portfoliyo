@@ -1,339 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masum S. Patel - Online Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --card-bg: #121212;
-            --accent-color: #e2b714; /* Golden Accent matching professional portfolios */
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-color: #262626;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masum Patel - Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #0a0a0a;
+    --card-bg: #121212;
+    --accent-color: #e2b714;
+    --text-main: #ffffff;
+    --text-mid: #a0a0a0;
+    --border-color: #262626;
+  }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Outfit', sans-serif;
-        }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+  }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 40px 20px;
-        }
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 60px 20px;
+    overflow-x: hidden;
+  }
 
-        .resume-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+  /* Custom Cursor Elements matching portfolio */
+  .cursor {
+    width: 8px;
+    height: 8px;
+    background: var(--text-main);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+  }
+  .cursor-ring.hovering {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--text-main);
+  }
 
-        /* Header Styles */
-        header {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+  /* Action Buttons Grid */
+  .actions-nav {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-        .header-left h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+  .btn-back {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+  }
+  .btn-back:hover {
+    opacity: 0.7;
+  }
 
-        .header-left h1 span {
-            color: var(--accent-color);
-        }
+  .btn-print {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 12px 24px;
+    border-radius: 0px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-print:hover {
+    background: var(--text-main);
+    color: var(--bg-color);
+    border-color: var(--text-main);
+  }
 
-        .title-tag {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            margin-top: 5px;
-            font-weight: 500;
-        }
+  /* Main Container Layout */
+  .resume-layout {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 60px;
+    position: relative;
+  }
 
-        .header-right {
-            text-align: right;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
+  /* Header Section */
+  .resume-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 
-        .header-right a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+  .header-left h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+  .header-left h1 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .header-tagline {
+    font-size: 14px;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 15px;
+  }
 
-        .header-right a:hover {
-            color: var(--accent-color);
-        }
+  .header-right {
+    text-align: right;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+  .header-right a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .header-right a:hover {
+    color: var(--text-main);
+  }
 
-        /* Section Layout */
-        .section-title {
-            font-size: 1.3rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 20px;
-            border-left: 3px solid var(--accent-color);
-            padding-left: 10px;
-        }
+  /* Block Sections */
+  .resume-section {
+    margin-bottom: 50px;
+  }
+  .section-eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+  }
 
-        section {
-            margin-bottom: 40px;
-        }
+  .objective-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--text-main);
+    font-weight: 300;
+  }
 
-        p.objective {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
+  /* Info / Data Grids */
+  .info-item {
+    margin-bottom: 35px;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .info-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-main);
+  }
+  .info-date {
+    font-size: 14px;
+    color: var(--text-mid);
+    letter-spacing: 1px;
+  }
+  .info-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .info-desc {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
 
-        /* Grid for Experience & Education */
-        .timeline-item {
-            margin-bottom: 25px;
-            position: relative;
-        }
+  /* List Styling mapping process steps */
+  .info-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .info-list li {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+  }
+  .info-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--border-color);
+  }
 
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            font-size: 1.1rem;
-            flex-wrap: wrap;
-        }
+  /* Tools Tags format */
+  .tools-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tool-tag {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 8px 18px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
+    transition: border-color 0.3s;
+  }
+  .tool-tag:hover {
+    border-color: var(--text-main);
+  }
 
-        .timeline-company {
-            color: var(--text-muted);
-            font-weight: 400;
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
+  .personal-details p {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+  }
+  .personal-details strong {
+    color: var(--text-main);
+    font-weight: 500;
+  }
 
-        .timeline-date {
-            color: var(--accent-color);
-            font-size: 0.95rem;
-        }
+  /* Print Media Layout Fixes */
+  @media print {
+    body { background: #ffffff; color: #000000; padding: 0; }
+    .resume-layout { border: none; padding: 0; background: #ffffff; color: #000000; }
+    .actions-nav, .cursor, .cursor-ring { display: none; }
+    .section-eyebrow, .info-date, .header-right, .info-sub, .info-desc, .info-list li, .personal-details p { color: #000000 !important; }
+    .header-left h1, .info-title, .personal-details strong, .objective-text { color: #000000 !important; }
+    .tool-tag { border: 1px solid #000000 !important; color: #000000 !important; }
+    .info-list li::before { color: #000000 !important; }
+  }
 
-        .timeline-body {
-            color: var(--text-muted);
-            margin-top: 8px;
-            padding-left: 15px;
-        }
-
-        .timeline-body li {
-            margin-bottom: 5px;
-        }
-
-        /* Skills Tags */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background-color: #1a1a1a;
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        /* Floating Back/Print Action */
-        .actions {
-            max-width: 900px;
-            margin: 0 auto 20px auto;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .btn {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-color);
-            color: #000;
-            border-color: var(--accent-color);
-        }
-
-        /* Print optimization */
-        @media print {
-            body { background: #fff; color: #000; padding: 0; }
-            .resume-container { border: none; box-shadow: none; padding: 0; background: #fff; color: #000;}
-            .actions, .skill-tag:hover { display: none; }
-            .section-title, .timeline-date, .header-left h1 span, .title-tag { color: #000 !important; border-color: #000 !important; }
-            .skill-tag { background: #fff; color: #000; border: 1px solid #000; }
-            .header-right a { color: #000; }
-        }
-
-        @media (max-width: 600px) {
-            header { flex-direction: column; text-align: center; }
-            .header-right { text-align: center; width: 100%; }
-            .timeline-header { flex-direction: column; }
-            .resume-container { padding: 20px; }
-        }
-    </style>
+  @media (max-width: 768px) {
+    .resume-layout { padding: 30px 20px; }
+    .resume-header { flex-direction: column; gap: 15px; }
+    .header-right { text-align: left; }
+    .header-left h1 { font-size: 2.2rem; }
+    .info-row { flex-direction: column; gap: 5px; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="actions">
-        <a href="index.html" class="btn">← Back to Portfolio</a>
-        <button onclick="window.print()" class="btn">Print / Save as PDF 🖨️</button>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- TOP NAV ACTIONS -->
+<div class="actions-nav">
+  <a href="index.html" class="btn-back">← Back To Portfolio</a>
+  <button onclick="window.print()" class="btn-print">Print / Save PDF</button>
+</div>
+
+<!-- RESUME CONTENT BOX -->
+<div class="resume-layout">
+  
+  <!-- HEADER -->
+  <header class="resume-header">
+    <div class="header-left">
+      <h1>Masum S. <em>Patel</em></h1>
+      <div class="header-tagline">Social Media Marketing & SEO Executive — IoT Enthusiast</div>[cite: 5]
+    </div>
+    <div class="header-right">
+      <p>📍 Bapunagar - 380024, Ahmedabad</p>[cite: 5]
+      <p>📱 <a href="tel:+919727831818">(+91) 9727831818</a></p>[cite: 5]
+      <p>✉️ <a href="mailto:Masumpatel186@gmail.com">Masumpatel186@gmail.com</a></p>[cite: 5]
+    </div>
+  </header>
+
+  <!-- OBJECTIVE -->
+  <section class="resume-section">
+    <div class="section-eyebrow">Objective</div>
+    <p class="objective-text">
+      Seeking a challenging position with a reputable organization where I can acquire new skills, broaden my knowledge, and leverage my expertise in web development, SEO, and IoT solutions.[cite: 5]
+    </p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="resume-section">
+    <div class="section-eyebrow">Experience</div>
+    
+    <div class="info-item">
+      <div class="info-row">
+        <div class="info-title">Social Media Marketing & SEO Executive</div>
+        <div class="info-date">NOV 2025 - PRESENT</div>[cite: 5]
+      </div>
+      <div class="info-sub">NXC Controls Pvt. Ltd. — Ahmedabad</div>[cite: 5]
+      <ul class="info-list">
+        <li>Designed and developed responsive posts tailored to business requirements.</li>[cite: 5]
+        <li>Implemented on-page and off-page SEO strategies to improve search engine rankings.</li>[cite: 5]
+        <li>Managed social media channels and executed digital marketing campaigns.</li>[cite: 5]
+      </ul>
     </div>
 
-    <div class="resume-container">
-        <!-- HEADER -->
-        <header>
-            <div class="header-left">
-                <h1>MASUM S. <span>PATEL</span></h1>
-                <div class="title-tag">Social Media Marketing & SEO Executive | IoT Enthusiast</div>
-            </div>
-            <div class="header-right">
-                <p>📍 Bapunagar - 380024, Ahmedabad</p>
-                <p>📞 <a href="tel:+919727831818">(+91) 9727831818</a></p>
-                <p>✉️ <a href="mailto:Masumpatel186@gmail.com">Masumpatel186@gmail.com</a></p>
-            </div>
-        </header>
-
-        <!-- OBJECTIVE -->
-        <section>
-            <div class="section-title">Objective</div>
-            <p class="objective">
-                Seeking a challenging position with a reputable organization where I can acquire new skills, broaden my knowledge, and leverage my expertise in web development, SEO, and IoT solutions.
-            </p>
-        </section>
-
-        <!-- EXPERIENCE -->
-        <section>
-            <div class="section-title">Experience</div>
-            
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>Social Media Marketing & SEO Executive</div>
-                    <div class="timeline-date">NOV 2025 - Present</div>
-                </div>
-                <div class="timeline-company">NXC Controls Pvt. Ltd. | Ahmedabad</div>
-                <ul class="timeline-body">
-                    <li>Designed and developed responsive posts tailored to business requirements.</li>
-                    <li>Implemented on-page and off-page SEO strategies to improve search engine rankings.</li>
-                    <li>Managed social media channels and executed digital marketing campaigns.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>Sale-Purchase Executive (DMS)</div>
-                    <div class="timeline-date">2024 - 2025 (1.5 Years)</div>
-                </div>
-                <div class="timeline-company">SANITRADE (Jaquar AD) | Ahmedabad</div>
-                <ul class="timeline-body">
-                    <li>Managed sale-purchase orders through the Dealer Management System (DMS).</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- EDUCATION -->
-        <section>
-            <div class="section-title">Education</div>
-
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>B.Tech - Computer Engineering</div>
-                    <div class="timeline-date">May 2023</div>
-                </div>
-                <div class="timeline-company">Swarnim Startup & Innovation University</div>
-                <p class="timeline-body"><strong>CGPA:</strong> 9.11 (Distinction)</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>Diploma - Computer Engineering</div>
-                    <div class="timeline-date">May 2021</div>
-                </div>
-                <div class="timeline-company">Swarnim Startup & Innovation University</div>
-                <p class="timeline-body"><strong>CGPA:</strong> 7.73 (First Class)</p>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section>
-            <div class="section-title">Skills</div>
-            <div class="skills-grid">
-                <div class="skill-tag">SEO Optimization</div>
-                <div class="skill-tag">Social Media Marketing</div>
-                <div class="skill-tag">Web Design</div>
-                <div class="skill-tag">IoT Development</div>
-                <div class="skill-tag">PHP</div>
-                <div class="skill-tag">Python (Django)</div>
-                <div class="skill-tag">HTML / CSS</div>
-                <div class="skill-tag">SQL</div>
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section>
-            <div class="section-title">Projects</div>
-
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>Project 1 - DigiEvento</div>
-                </div>
-                <p class="timeline-body">
-                    An event planning platform where customers can connect with diverse event planners, book events per their requirements, and planners can promote their services.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>Project 2 - IoT Based Smart Shopping Cart</div>
-                </div>
-                <p class="timeline-body">
-                    An IoT-powered shopping cart that scans RFID-tagged products, automatically generates bills, and provides live shopping details via a web dashboard. Customers unlock the trolley using a digital card.
-                </p>
-            </div>
-        </section>
-
-        <!-- PERSONAL INFO -->
-        <section>
-            <div class="section-title">Personal Information</div>
-            <p style="color: var(--text-muted);"><strong>Languages Known:</strong> English, Gujarati, Hindi</p>
-            <p style="color: var(--text-muted);"><strong>Nationality:</strong> Indian</p>
-            <p style="color: var(--text-muted);"><strong>Marital Status:</strong> Single</p>
-            <p style="color: var(--text-muted);"><strong>Date of Birth:</strong> 1st August 2000</p>
-        </section>
+    <div class="info-item">
+      <div class="info-row">
+        <div class="info-title">Sale-Purchase Executive (DMS)</div>
+        <div class="info-date">2024 - 2025 (1.5 YEARS)</div>[cite: 5]
+      </div>
+      <div class="info-sub">SANITRADE (Jaquar AD) — Ahmedabad</div>[cite: 5]
+      <ul class="info-list">
+        <li>Managed sale-purchase orders through the Dealer Management System (DMS).</li>[cite: 5]
+      </ul>
     </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="resume-section">
+    <div class="section-eyebrow">Education</div>
+
+    <div class="info-item">
+      <div class="info-row">
+        <div class="info-title">B.Tech Computer Engineering</div>
+        <div class="info-date">MAY 2023</div>[cite: 5]
+      </div>
+      <div class="info-sub">Swarnim Startup & Innovation University</div>[cite: 5]
+      <div class="info-desc">CGPA: 9.11 (Distinction)</div>[cite: 5]
+    </div>
+
+    <div class="info-item">
+      <div class="info-row">
+        <div class="info-title">Diploma - Computer Engineering</div>
+        <div class="info-date">MAY 2021</div>[cite: 5]
+      </div>
+      <div class="info-sub">Swarnim Startup & Innovation University</div>[cite: 5]
+      <div class="info-desc">CGPA: 7.73 (First Class)</div>[cite: 5]
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="resume-section">
+    <div class="section-eyebrow">Skills</div>
+    <div class="tools-wrap">
+      <span class="tool-tag">HTML/CSS</span>[cite: 5]
+      <span class="tool-tag">PHP</span>[cite: 5]
+      <span class="tool-tag">Python (Django)</span>[cite: 5]
+      <span class="tool-tag">SQL</span>[cite: 5]
+      <span class="tool-tag">IoT Development</span>[cite: 5]
+      <span class="tool-tag">Web Design</span>[cite: 5]
+      <span class="tool-tag">SEO Optimization</span>[cite: 5]
+      <span class="tool-tag">Social Media Marketing</span>[cite: 5]
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="resume-section">
+    <div class="section-eyebrow">Projects</div>
+
+    <div class="info-item">
+      <div class="info-row">
+        <div class="info-title">Project 1 - DigiEvento</div>[cite: 5]
+      </div>
+      <div class="info-desc">
+        An event planning platform where customers can connect with diverse event planners, book events per their requirements, and planners can promote their services.[cite: 5]
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-row">
+        <div class="info-title">Project 2 - IoT Based Smart Shopping Cart</div>[cite: 5]
+      </div>
+      <div class="info-desc">
+        An IoT-powered shopping cart that scans RFID-tagged products, automatically generates bills, and provides live shopping details via a web dashboard. Customers unlock the trolley using a digital card.[cite: 5]
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAL INFO -->
+  <section class="resume-section" style="margin-bottom: 0;">
+    <div class="section-eyebrow">Personal Information</div>
+    <div class="personal-details">
+      <p><strong>Languages:</strong> English, Gujarati, Hindi</p>[cite: 5]
+      <p><strong>Nationality:</strong> Indian</p>[cite: 5]
+      <p><strong>Marital Status:</strong> Single</p>[cite: 5]
+      <p><strong>Date of Birth:</strong> 1st August 2000</p>[cite: 5]
+    </div>
+  </section>
+
+</div>
+
+<!-- CURSOR SCRIPT FROM PORTFOLIO -->
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => { 
+  mx = e.clientX; 
+  my = e.clientY; 
+  cursor.style.left = mx+'px'; 
+  cursor.style.top = my+'px'; 
+});
+
+function animRing() { 
+  rx += (mx - rx) * 0.12; 
+  ry += (my - ry) * 0.12; 
+  ring.style.left = rx+'px'; 
+  ring.style.top = ry+'px'; 
+  requestAnimationFrame(animRing); 
+}
+animRing();
+
+document.querySelectorAll('a, button, .tool-tag').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+});
+</script>
 
 </body>
 </html>
