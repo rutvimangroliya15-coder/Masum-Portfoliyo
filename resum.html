@@ -233,14 +233,162 @@
             .skill-tag { background: transparent !important; border: 1px solid #cccccc !important; }
         }
 
-        @media (max-width: 768px) {
-            body { padding: 20px; }
-            header { flex-direction: column; gap: 15px; }
-            .header-right { text-align: left; }
-            .header-left h1 { font-size: 2.2rem; }
-            .timeline-header { flex-direction: column; gap: 2px; }
-            .personal-info-row strong { width: auto; margin-right: 10px; }
-        }
+     /* =========================
+   MOBILE VIEW
+========================= */
+@media (max-width: 768px) {
+
+    body{
+        padding:12px;
+        font-size:12px;
+    }
+
+    .resume-container{
+        max-width:100%;
+    }
+
+    header{
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .header-left h1{
+        font-size:1.5rem;
+    }
+
+    .title-tag{
+        font-size:.75rem;
+    }
+
+    .header-right{
+        text-align:right;
+        font-size:.75rem;
+        line-height:1.4;
+    }
+
+    .section-title{
+        font-size:.85rem;
+        margin-bottom:8px;
+    }
+
+    section{
+        margin-bottom:15px;
+    }
+
+    .objective,
+    .timeline-body li,
+    .timeline-body p,
+    .personal-info-row p{
+        font-size:.78rem;
+        line-height:1.4;
+    }
+
+    .timeline-header{
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        gap:5px;
+        font-size:.85rem;
+    }
+
+    .timeline-company{
+        font-size:.78rem;
+    }
+
+    .timeline-date{
+        font-size:.75rem;
+    }
+
+    .skill-tag{
+        font-size:.72rem;
+        padding:4px 8px;
+    }
+
+    .personal-info-row strong{
+        width:120px;
+    }
+
+    .actions{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+}
+
+
+/* =========================
+   PDF / PRINT - SINGLE PAGE
+========================= */
+@media print {
+
+    @page{
+        size:A4;
+        margin:8mm;
+    }
+
+    body{
+        padding:0;
+        zoom:0.82;
+        background:#fff;
+    }
+
+    .actions{
+        display:none !important;
+    }
+
+    .resume-container{
+        max-width:100%;
+        width:100%;
+    }
+
+    section{
+        margin-bottom:12px;
+        page-break-inside:avoid;
+    }
+
+    .timeline-item{
+        margin-bottom:10px;
+        page-break-inside:avoid;
+    }
+
+    .header-left h1{
+        font-size:24px;
+    }
+
+    .title-tag{
+        font-size:11px;
+    }
+
+    .objective,
+    .timeline-body li,
+    .personal-info-row p{
+        font-size:11px;
+        line-height:1.3;
+    }
+
+    .section-title{
+        font-size:12px;
+        margin-bottom:8px;
+    }
+
+    .skill-tag{
+        font-size:10px;
+        padding:3px 8px;
+        background:transparent !important;
+        border:1px solid #ccc !important;
+    }
+
+    *{
+        page-break-inside:avoid;
+    }
+}
     </style>
 </head>
 <body>
