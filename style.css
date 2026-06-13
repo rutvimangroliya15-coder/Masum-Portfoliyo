@@ -1396,13 +1396,13 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  /* color: var(--text-mid); */
+  color: var(--text-mid);
   transition: all .3s ease;
 }
 
 .proj-actions .social-btn:hover{
   border-color: var(--gold);
-  /* color: var(--gold); */
+  color: var(--gold);
 }
 
 .proj-actions .social-group{
